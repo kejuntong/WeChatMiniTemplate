@@ -1,6 +1,7 @@
 <!--index.wxml-->
 <wxs module="filter" src="../../utils/filter.wxs"></wxs>
 <view class="container">
+
     <view class="nav-bar">
         <view wx:for="{{navList}}"
               wx:key="{{item.value}}"
@@ -10,6 +11,7 @@
             {{item.lable}}
         </view>
     </view>
+
     <view class="main">
         <view wx:for="{{topicList}}" wx:key="item.id" class="main-item">
             <navigator url="/pages/topicDetail/topicDetail?id={{item.id}}">
@@ -50,5 +52,7 @@
             </navigator>
         </view>
     </view>
+
     <view class="loadMore" wx:if="{{topicList.length}}">{{showLoadMore ? '正在加载...' : '我们是有底线的~'}}</view>
+    
 </view>
