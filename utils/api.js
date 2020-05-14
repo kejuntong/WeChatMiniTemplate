@@ -26,5 +26,4 @@ module.exports = {
     accessTokenUrl,
     replyUrl,
     fetchHandler,
-
 }

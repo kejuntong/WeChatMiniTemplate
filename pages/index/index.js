@@ -1,16 +1,21 @@
 //index.js
-var fetch = require('../../utils/api')
+var fetch = require('../../utils/api').default
+var databse = require('../../utils/clouldDatabase').default
 import {navList} from '../../utils/utils'
+
 Page({
     data: {
         navList:navList,
         activeValue:'',
         topicList:[],
         showLoadMore:true,
-        page:1,
+
+        skip:0,
+
         tab:'',
-        limit:10
+        limit:5
     },
+
     navHandler(e) {
         let that = this
         that.setData({
@@ -25,56 +30,64 @@ Page({
             that.getAction()
         })
     },
+
     onShareAppMessage: function () {
         return {
             title: '仿CNode微社区',
             path: '/page/index/index'
         }
     },
+
     onPullDownRefresh:function() {
         let that = this
         that.setData({
             topicList:[],
-            page:1
+            skip:0
         },() => {
             that.getAction()
             wx.stopPullDownRefresh()
         })
     },
+
     onReachBottom:function(){
         let that = this
-        let page = that.data.page
+        let skip = that.data.skip
+        let limit = that.data.limit
         that.setData({
-            page:++page
+            skip:(skip+limit)
         },() => {
             setTimeout(()=>{
-                that.getAction()
+                if (that.data.showLoadMore) that.getAction()
+                else console.log('show load more', 'false')
             },600)
         })
     },
+
     getAction(){
         wx.showLoading({title:''})
         let that = this
-        let query = {
-            page:that.data.page,
-            tab:that.data.tab,
-            limit:that.data.limit
-        }
-        fetch.fetchHandler('',fetch.topicsUrl,query,(res) => {
-            if(res.success){
-                let data = [...that.data.topicList,...res.data]
+        databse.queryDb('test_post', null, 
+        that.data.limit, that.data.skip,
+        (res) => {
+            console.log('query success: ', res.data)
+            let data = [...that.data.topicList,...res.data]
+            this.setData({
+                topicList:data,
+            })
+
+            if(res.data.length < that.data.limit){
                 this.setData({
-                    topicList:data,
+                    showLoadMore:false
                 })
-                if(res.data.length <10){
-                    this.setData({
-                        showLoadMore:false
-                    })
-                }
-                wx.hideLoading()
             }
+
+            wx.hideLoading()
+        },
+        (err) => {
+            wx.hideLoading()
         })
     },
+
     onLoad:function() {
         this.getAction()
     },
