@@ -1,4 +1,5 @@
 
+
 function queryDb(collection, where, limit, skip, successCb, failCb) {
   const baseQuery = wx.cloud.database().collection(collection)
   let query1 = where ? baseQuery.where : baseQuery
