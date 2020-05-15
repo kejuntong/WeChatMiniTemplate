@@ -4,16 +4,19 @@ function formatNumber(n){
     return n[1] ? n : '0' + n
 }
 var filter = {
-    formatTime:function(date) {
-      var myDate = getDate(date)
-      var year = myDate.getFullYear()
-      var month = myDate.getMonth() + 1
-      var day = myDate.getDate()
-      var hour = myDate.getHours()
-      var minute = myDate.getMinutes()
-      var second = myDate.getSeconds()
-      return [year, month, day].map(formatNumber).join('/') + ' ' + [hour, minute, second].map(formatNumber).join(':')
+  formatTime:function(date) {
+    // when posting, use:
+    // dateString = JSON.stringify(date)
+    var myDate = getDate(date)
+    var year = myDate.getFullYear()
+    var month = myDate.getMonth() + 1
+    var day = myDate.getDate()
+    var hour = myDate.getHours()
+    var minute = myDate.getMinutes()
+    var second = myDate.getSeconds()
+    return [year, month, day].map(formatNumber).join('/') + ' ' + [hour, minute, second].map(formatNumber).join(':')
     },
+
     navValueToName:function(value,data){
        for(var i = 0; i < data.length; ++i){
        if(data[i].value == value){
@@ -24,6 +27,7 @@ var filter = {
     }
 
 }
+
 module.exports = {
   formatTime: filter.formatTime,
   navValueToName:filter.navValueToName

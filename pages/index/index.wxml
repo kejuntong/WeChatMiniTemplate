@@ -15,13 +15,15 @@
     <view class="main">
         <view wx:for="{{topicList}}" wx:key="item.id" class="main-item">
             <navigator url="/pages/topicDetail/topicDetail?id={{item.id}}">
+
                 <view class="main-item-t">
+
                     <view class="main-item-t-t">
                         <view class="main-item-t-t-item main-item-t-t-l">
                             <image class="headImg"
                                    src="{{item.author.avatar_url}}"
                                    lazy-load="{{true}}"
-                                   alt="{{ite.author.loginname}}">
+                                   alt="{{item.author.loginname}}">
                             </image>
                         </view>
                         <view class="main-item-t-t-item main-item-t-t-m">
@@ -36,11 +38,14 @@
                             </view>
                         </view>
                     </view>
+
                     <view class="main-item-t-m">
                         <view class="main-item-t-m-title">{{item.title}}</view>
                         <view class="main-item-t-m-decription">文章描述,关键是没有这个字段是什么鬼，我也很无奈，暂时先这样显示吧。</view>
                     </view>
+
                 </view>
+
                 <view class="main-item-b">
                     <text class="iconfont icon-pinglun"></text>
                     <text class="main-item-b-item">{{item.reply_count}}</text>
@@ -49,6 +54,7 @@
                     <text class="iconfont icon-clock"></text>
                     <text class="main-item-b-item">{{filter.formatTime(item.last_reply_at)}}</text>
                 </view>
+
             </navigator>
         </view>
     </view>
