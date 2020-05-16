@@ -8,28 +8,63 @@ var navList = [
         value: 'good'
     },
     {
-        lable: '问答',
-        value: 'ask'
+        lable: '信息',
+        value: 'info'
     },
     {
-        lable: '分享',
-        value: 'share'
+        lable: '搭车',
+        value: 'carpool'
     },
     {
-        lable: '招聘',
-        value: 'job'
+        lable: '租房',
+        value: 'house'
     }
 ]
-function getLabel(data){
+
+// 不包括全部
+function getLabels(){
     var tempArr = []
-    for(var i in data){
-        if(data[i].value){
-            tempArr.push(data[i].lable)
+    for(var i in navList){
+        if(navList[i].value){
+            tempArr.push(navList[i].lable)
         }
     }
     return tempArr
 }
+
+// 不包括全部
+function getValues(){
+    var tempArr = []
+    for(var i in navList){
+        if(navList[i].value){
+            tempArr.push(navList[i].value)
+        }
+    }
+    return tempArr
+}
+
+function getValueByLable(lable) {
+    for(var i in navList){
+        if (navList[i].lable == lable) {
+            return navList[i].value
+        }
+    }
+    return null
+}
+
+// 不包括全部
+function getValueByIndex(index) {
+    let tempArr = getValues()
+    if (index < tempArr.length && index >= 0) {
+        return tempArr[index]
+        } else {
+            return null
+        }
+}
+
 module.exports = {
     navList,
-    getLabel
+    getLabels,
+    getValueByLable,
+    getValueByIndex
 }

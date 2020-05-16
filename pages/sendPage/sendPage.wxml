@@ -21,10 +21,11 @@
             </view>
         </view>
         <view class="form-submit">
-            <button type="primary" formType="submit" disabled="{{loginInfo.loginname ? false : true}}" bindtap="sendHandler">发帖</button>
+            <button type="primary" formType="submit" 
+            disabled="{{loginInfo ? false : true}}">发帖</button>
         </view>
         <view class="form-notice" wx:if="{{!loginInfo.loginname}}">
-            <text>登录后才能发帖，请先前往用户中心</text>
+            <text>登录后才能发帖</text>
         </view>
     </form>
 </view>

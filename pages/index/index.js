@@ -65,7 +65,7 @@ Page({
 
     getAction(){
 
-        console.log('打印时间', JSON.stringify(new Date()))
+        console.log('打印时间', JSON.parse(JSON.stringify(new Date())))
 
         wx.showLoading({title:''})
         let that = this
