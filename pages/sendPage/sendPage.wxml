@@ -30,7 +30,8 @@
     </form>
 
       <view class="btn-container-authorize" wx:if="{{!loginInfo}}">
-        <button type="primary" open-type="getUserInfo" bindgetuserinfo="getUserInfo">
+        <button type="primary" open-type="getUserInfo" bindgetuserinfo="getUserInfo"
+        bindtap="onAuthorizeClick">
         授权</button>
       </view>
 </view>

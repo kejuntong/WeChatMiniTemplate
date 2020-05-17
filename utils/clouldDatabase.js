@@ -2,7 +2,7 @@ const dbRef = wx.cloud.database()
 
 function queryDb(collection, where, limit, skip, successCb, failCb) {
   const baseQuery = dbRef.collection(collection)
-  let query1 = where ? baseQuery.where : baseQuery
+  let query1 = where ? baseQuery.where(where) : baseQuery
   let query2 = limit ? query1.limit(limit) : query1
   let query3 = skip ? query2.skip(skip) : query2
   // .where({

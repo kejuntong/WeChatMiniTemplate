@@ -28,7 +28,16 @@ Page({
         })
     },
 
+    onAuthorizeClick(e) {
+        wx.showLoading({
+          title: '等待授权',
+          mask: true
+        })
+        console.log('click test', e)
+    },
+
     getUserInfo(info) {
+        wx.hideLoading()
         const userInfo = info.detail.userInfo
         console.log('adfasdf', userInfo)
         app.globalData.wxUserInfo = userInfo
@@ -53,6 +62,14 @@ Page({
         (res) => {
             console.log('insert success:', res)
             wx.hideLoading()
+            wx.switchTab({
+                url: '../index/index', 
+                success: function (e) { 
+                    var page = getCurrentPages().pop(); 
+                    if (page == undefined || page == null) return; 
+                    page.onLoad();
+                } 
+            }) 
         },
         (err) => {
             console.log('insert fail:', err)

@@ -4,10 +4,6 @@ var navList = [
         value: ''
     },
     {
-        lable: '精华',
-        value: 'good'
-    },
-    {
         lable: '信息',
         value: 'info'
     },
@@ -18,6 +14,10 @@ var navList = [
     {
         lable: '租房',
         value: 'house'
+    },
+    {
+        lable: '交易',
+        value: 'trade'
     }
 ]
 

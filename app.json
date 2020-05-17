@@ -36,12 +36,6 @@
         "text": "消息",
         "iconPath": "images/bar/message.png",
         "selectedIconPath": "images/bar/messageHL.png"
-      },
-      {
-        "pagePath": "pages/profile/profile",
-        "text": "用户",
-        "iconPath": "images/bar/user.png",
-        "selectedIconPath": "images/bar/userHL.png"
       }
     ]
   },

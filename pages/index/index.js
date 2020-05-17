@@ -21,7 +21,9 @@ Page({
         that.setData({
             activeValue:e.target.dataset.value,
             tab:e.target.dataset.value,
-            topicList:[]
+            topicList:[],
+            skip: 0,
+            showLoadMore: true
         },() =>{
             wx.pageScrollTo({
                 scrollTop: 0,
@@ -42,7 +44,8 @@ Page({
         let that = this
         that.setData({
             topicList:[],
-            skip:0
+            skip:0,
+            showLoadMore: true
         },() => {
             that.getAction()
             wx.stopPullDownRefresh()
@@ -64,12 +67,13 @@ Page({
     },
 
     getAction(){
-
         console.log('打印时间', JSON.parse(JSON.stringify(new Date())))
-
         wx.showLoading({title:''})
         let that = this
-        databse.queryDb('test_post', null, 
+        let where = that.data.tab ? {
+            tab: that.data.tab
+        } : null
+        databse.queryDb('test_post', where, 
         that.data.limit, that.data.skip,
         (res) => {
             console.log('query success:', res.data)
@@ -90,7 +94,13 @@ Page({
     },
 
     onLoad:function() {
-        this.getAction()
+        console.log('路由测试','onLoad')
+        // this.getAction()
+        this.onPullDownRefresh()
     },
 
+    onShow:function() {
+        console.log('路由测试','onShow')
+        // this.onPullDownRefresh()
+    }
 })
