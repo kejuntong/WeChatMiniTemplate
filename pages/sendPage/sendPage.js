@@ -28,6 +28,15 @@ Page({
         })
     },
 
+    getUserInfo(info) {
+        const userInfo = info.detail.userInfo
+        console.log('adfasdf', userInfo)
+        app.globalData.wxUserInfo = userInfo
+        this.setData({
+          loginInfo: userInfo
+        })
+      },
+
     pickerHandler:function(e){
         console.log('pickerHandler, 携带数据为：', e.detail.value)
         this.setData({pickerIndex:e.detail.value})

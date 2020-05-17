@@ -30,5 +30,8 @@
     margin-top: 20rpx;
     font-size: 28rpx;
     color: #999; }
+  .container .btn-container-authorize {
+    margin-top: 10px;
+    padding: 0 20rpx; }
 
 /*# sourceMappingURL=sendPage.wxss.map */

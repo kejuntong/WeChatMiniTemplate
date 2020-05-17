@@ -22,10 +22,15 @@
         </view>
         <view class="form-submit">
             <button type="primary" formType="submit" 
-            disabled="{{loginInfo ? false : true}}">发帖</button>
+            disabled="{{!loginInfo}}">发帖</button>
         </view>
-        <view class="form-notice" wx:if="{{!loginInfo.loginname}}">
-            <text>登录后才能发帖</text>
+        <view class="form-notice" wx:if="{{!loginInfo}}">
+            <text>授权获取用户信息后，才能发帖</text>
         </view>
     </form>
+
+      <view class="btn-container-authorize" wx:if="{{!loginInfo}}">
+        <button type="primary" open-type="getUserInfo" bindgetuserinfo="getUserInfo">
+        授权</button>
+      </view>
 </view>
