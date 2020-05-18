@@ -1,6 +1,6 @@
 /**app.wxss**/
-@import './utils/iconfont.wxss'
-@import "/wxParse/wxParse.wxss"
+@import "./utils/iconfont.wxss";
+@import "/wxParse/wxParse.wxss";
 .container {
   font-size:14px;
   font-family:'Microsoft YaHei', Helvetica, STHeiTi, sans-seri;
@@ -12,3 +12,10 @@
 .bg-ddd{
   background:#ddd;
 }
+
+.swiper-item {
+    /* TODO: vertical center not working */
+    justify-content: center;
+    align-items:center;
+    width: 100%;
+  }

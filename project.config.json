@@ -19,10 +19,11 @@
 			"ignore": [],
 			"disablePlugins": [],
 			"outputPath": ""
-		}
+		},
+		"useCompilerModule": false
 	},
 	"compileType": "miniprogram",
-	"libVersion": "1.9.94",
+	"libVersion": "2.11.0",
 	"appid": "wx4caee7ca67d3dfb3",
 	"projectname": "wx-project",
 	"isGameTourist": false,

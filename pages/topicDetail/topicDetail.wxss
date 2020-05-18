@@ -48,6 +48,12 @@ ul, ol {
       margin-top: 20rpx;
       padding: 0 20rpx;
     }
+    .main-item .main-item-t .swiper {
+      margin-top: 20rpx; }
+      .main-item .main-item-t .swiper.swiper-item {
+        justify-content: center;
+        align-items:center;
+        width: 100%; }
 
 .main-replies {
   margin-top: 20rpx;

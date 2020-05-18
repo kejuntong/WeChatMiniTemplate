@@ -9,11 +9,8 @@ Page({
         isLoaded: false,
         id: '',
         loginInfo: {},
-        imgSrc: [
-            "../../assets/img/11.jpg",
-            "../../assets/img/12.jpg",
-            "../../assets/img/13.png",
-          ],
+        swiperHeightPx:"",
+        swiperHeight:0
     },
 
     onLoad:function(){
@@ -27,7 +24,7 @@ Page({
     },
 
     getAction: function(){
-        wx.showLoading({title:'加载中'})
+        wx.showLoading({title:'加载中...'})
         let that = this
         let where = {
             _id: that.data.id
@@ -49,17 +46,29 @@ Page({
         })
     },
 
-    replyUpsHandler(e){
-        let id = e.target.id
-        let url = Api.replyUrl + '/' + id + '/ups'
-        let data = {accesstoken:this.data.loginInfo.accesstoken}
-        Api.fetchHandler('POST',url,data,(res) =>{
-            if(res.success){
-                wx.showToast({title:"评论成功！"})
-            }else{
-
-                wx.showToast({title:res.error_msg})
-             }
+    onImgLoad:function(e){
+        var winWid = wx.getSystemInfoSync().windowWidth;
+        var imgh=e.detail.height;
+        var imgw=e.detail.width;
+        var swiperH=winWid*imgh/imgw 
+        if (swiperH < this.data.swiperHeight) return
+        this.setData({
+            swiperHeight: swiperH,
+            swiperHeightPx: swiperH+"px"
         })
-    }
+    },
+
+    // replyUpsHandler(e){
+    //     let id = e.target.id
+    //     let url = Api.replyUrl + '/' + id + '/ups'
+    //     let data = {accesstoken:this.data.loginInfo.accesstoken}
+    //     Api.fetchHandler('POST',url,data,(res) =>{
+    //         if(res.success){
+    //             wx.showToast({title:"评论成功！"})
+    //         }else{
+
+    //             wx.showToast({title:res.error_msg})
+    //          }
+    //     })
+    // }
 })

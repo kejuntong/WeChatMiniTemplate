@@ -23,8 +23,21 @@
     .container .form-topic .form-item:nth-of-type(2) {
       flex: auto;
       padding: 30rpx 20rpx; }
+      .container .form-upload {
+        padding: 0 20rpx; 
+        margin-top: 20rpx;}
+      .container .form-swiper {
+        margin-top: 20rpx;}
+        .container .form-swiper .swiper-item {
+          /* TODO: vertical center not working */
+          justify-content: center;
+          align-items:center;
+          width: 100%;
+        }
   .container .form-submit {
-    padding: 0 20rpx; }
+    padding: 0 20rpx; 
+    margin-top: 20rpx;
+  margin-bottom: 20rpx;}
   .container .form-notice {
     text-indent: 20px;
     margin-top: 20rpx;

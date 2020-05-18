@@ -28,13 +28,19 @@
             </view>
         </view>
 
-    <swiper indicator-dots="true" autoplay="true" interval="3000" duration="500">
-        <block wx:for="{{imgSrc}}">
-            <swiper-item>
-                <image src="{{item}}" style="width:100%"></image>
-            </swiper-item>
-        </block>
-    </swiper>
+        <swiper class="swiper" 
+        wx:if="{{detailInfo.imageIds.length}}"
+        indicator-dots="true" 
+        indicator-color="#EEEEE0" indicator-active-color="#7CCD7C"
+        autoplay="true" interval="3000" duration="500" 
+        style="height:{{swiperHeightPx}}">
+            <block wx:for="{{detailInfo.imageIds}}">
+                <swiper-item>
+                <!-- TODO: add default loading image -->
+                    <image class="swiper-item" src="{{item}}" mode="widthFix" bindload='onImgLoad'></image>
+                </swiper-item>
+            </block>
+        </swiper>
 
     <view class="content">{{detailInfo.content}}</view>
     </view>
