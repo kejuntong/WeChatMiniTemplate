@@ -1,41 +1,54 @@
-var Api = require('../../utils/api')
+var databse = require('../../utils/clouldDatabase').default
 import {navList} from '../../utils/utils'
-var WxParse = require('../../wxParse/wxParse.js');
+
 Page({
     data:{
         navList:navList,
-        detailInfo:{},
-        id:'',
-        loginInfo:{}
+        detailInfo: {},
+        // TODO: figure out how to directly use detailInfo
+        isLoaded: false,
+        id: '',
+        loginInfo: {},
+        imgSrc: [
+            "../../assets/img/11.jpg",
+            "../../assets/img/12.jpg",
+            "../../assets/img/13.png",
+          ],
     },
+
     onLoad:function(){
+        console.log('test id:', this.options.id)
+        if (!this.options.id) return
         this.setData({
-            id:this.options.id
+            id: this.options.id
         },() =>{
             this.getAction()
         })
-        let that = this
-        wx.getStorage({
-            key:'loginInfo',
-            success:function(res){
-                that.setDate({
-                    loginInfo:res.data
-                })
-            }
-        })
     },
+
     getAction: function(){
         wx.showLoading({title:'加载中'})
         let that = this
-        let url = Api.topicUrl + '/' + that.data.id
-        Api.fetchHandler('',url,{},(res) =>{
-            if(res.success){
-                that.setData({detailInfo:res.data})
+        let where = {
+            _id: that.data.id
+        }
+        databse.queryDb('test_post', where, null, null,
+        (res) => {
+            wx.hideLoading()
+            if (res.data.length <= 0) {
+                console.log('data length 0...')
+                return
             }
-            WxParse.wxParse('content', 'html', res.data.content, that, 5)
+            that.setData({
+                isLoaded: true,
+                detailInfo: res.data[0]
+            })
+        },
+        (err) => {
             wx.hideLoading()
         })
     },
+
     replyUpsHandler(e){
         let id = e.target.id
         let url = Api.replyUrl + '/' + id + '/ups'

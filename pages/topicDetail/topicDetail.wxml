@@ -1,6 +1,6 @@
 <import src="../../wxParse/wxParse.wxml"/>
 <wxs module="filter" src="../../utils/filter.wxs"></wxs>
-<view class="container">
+<view class="container" wx:if="{{isLoaded}}">
     <view class="main-item">
         <view class="main-item-t">
             <view class="main-item-t-t">
@@ -27,11 +27,19 @@
                 <view class="main-item-t-m-title">{{detailInfo.title}}</view>
             </view>
         </view>
-        <view class="main-item-m">
-            <template is="wxParse" data="{{wxParseData:content.nodes}}"/>
-        </view>
+
+    <swiper indicator-dots="true" autoplay="true" interval="3000" duration="500">
+        <block wx:for="{{imgSrc}}">
+            <swiper-item>
+                <image src="{{item}}" style="width:100%"></image>
+            </swiper-item>
+        </block>
+    </swiper>
+
+    <view class="content">{{detailInfo.content}}</view>
     </view>
-    <view class="main-item main-replies">
+
+    <!-- <view class="main-item main-replies">
         <view class="main-item-t" wx:for="{{detailInfo.replies}}" wx:key="item.id">
             <view class="main-item-t-t">
                 <view class="main-item-t-t-item main-item-t-t-l">
@@ -55,5 +63,5 @@
                 <rich-text class="main-item-t-m-title" nodes="{{item.content}}"></rich-text>
             </view>
         </view>
-    </view>
+    </view> -->
 </view>

@@ -1,5 +1,4 @@
 //index.js
-var fetch = require('../../utils/api').default
 var databse = require('../../utils/clouldDatabase').default
 import {navList} from '../../utils/utils'
 
@@ -73,6 +72,7 @@ Page({
         let where = that.data.tab ? {
             tab: that.data.tab
         } : null
+
         databse.queryDb('test_post', where, 
         that.data.limit, that.data.skip,
         (res) => {

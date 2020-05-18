@@ -14,7 +14,7 @@
 
     <view class="main">
         <view wx:for="{{topicList}}" wx:key="item.id" class="main-item">
-            <navigator url="/pages/topicDetail/topicDetail?id={{item.id}}">
+            <navigator url="/pages/topicDetail/topicDetail?id={{item._id}}">
 
                 <view class="main-item-t">
 
@@ -41,7 +41,7 @@
 
                     <view class="main-item-t-m">
                         <view class="main-item-t-m-title">{{item.title}}</view>
-                        <view class="main-item-t-m-decription">文章描述,关键是没有这个字段是什么鬼，我也很无奈，暂时先这样显示吧。</view>
+                        <view class="main-item-t-m-decription">{{item.content}}</view>
                     </view>
 
                 </view>
