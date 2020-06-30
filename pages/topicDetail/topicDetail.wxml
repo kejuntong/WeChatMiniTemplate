@@ -29,7 +29,7 @@
         </view>
 
         <swiper class="swiper" 
-        wx:if="{{detailInfo.imageIds.length}}"
+        wx:if="{{detailInfo.imageIds.length > 0}}"
         indicator-dots="true" 
         indicator-color="#EEEEE0" indicator-active-color="#7CCD7C"
         autoplay="true" interval="3000" duration="500" 

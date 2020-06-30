@@ -34,7 +34,7 @@ Page({
 
     onShareAppMessage: function () {
         return {
-            title: '仿CNode微社区',
+            title: '小童小程序',
             path: '/page/index/index'
         }
     },

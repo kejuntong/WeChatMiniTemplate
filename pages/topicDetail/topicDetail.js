@@ -10,7 +10,8 @@ Page({
         id: '',
         loginInfo: {},
         swiperHeightPx:"",
-        swiperHeight:0
+        swiperHeight:0,
+        swiperItems: []
     },
 
     onLoad:function(){
@@ -36,6 +37,12 @@ Page({
                 console.log('data length 0...')
                 return
             }
+            // TODO: figure out a better way
+            if (res.data[0].imageIds > 0) {
+                wx.showLoading({
+                  title: '正在加载图片...',
+                })
+            }
             that.setData({
                 isLoaded: true,
                 detailInfo: res.data[0]
@@ -47,6 +54,10 @@ Page({
     },
 
     onImgLoad:function(e){
+
+        wx.hideLoading()
+        console.log('kejun test.....')
+
         var winWid = wx.getSystemInfoSync().windowWidth;
         var imgh=e.detail.height;
         var imgw=e.detail.width;
