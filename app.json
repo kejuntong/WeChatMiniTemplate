@@ -2,10 +2,7 @@
   "pages": [
     "pages/index/index",
     "pages/sendPage/sendPage",
-    "pages/message/message",
-    "pages/profile/profile",
-    "pages/topicDetail/topicDetail",
-    "pages/login/login"
+    "pages/message/message"
   ],
   "window": {
     "backgroundTextStyle": "dark",
