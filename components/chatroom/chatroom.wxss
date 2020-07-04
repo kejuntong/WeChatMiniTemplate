@@ -50,9 +50,7 @@
 }
 
 .body .message .avatar {
-  display: inline;
-  float: right;
-  /* position: relative; */
+  position: relative;
   top: 5rpx;
   width: 60rpx;
   height: 60rpx;
