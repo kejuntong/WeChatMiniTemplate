@@ -76,7 +76,7 @@ Page({
     getUserInfo(info) {
         wx.hideLoading()
         const userInfo = info.detail.userInfo
-        console.log('adfasdf', userInfo)
+        console.log('on get user info', userInfo)
         app.globalData.wxUserInfo = userInfo
         this.setData({
           loginInfo: userInfo

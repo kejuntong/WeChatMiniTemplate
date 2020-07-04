@@ -15,6 +15,7 @@ App({
           // 已经授权，可以直接调用 getUserInfo 获取头像昵称
           wx.getUserInfo({
             success: function (res) {
+              console.log('已授权', res)
               that.globalData.wxUserInfo = res.userInfo
             }
           })

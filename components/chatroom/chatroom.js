@@ -73,6 +73,8 @@ Component({
       return this.try(async () => {
         const openId = await this.getOpenID()
 
+console.log('open id init', openId)
+
         this.setData({
           openId,
         })
